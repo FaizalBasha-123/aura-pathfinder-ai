@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Health-tech color palette - Soft violet/teal/white */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 27%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+    
+    /* Primary - Soft violet */
+    --primary: 266 77% 70%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 266 77% 85%;
+    --primary-glow: 266 77% 90%;
+    
+    /* Secondary - Soft teal */
+    --secondary: 174 62% 65%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 174 62% 85%;
+    --secondary-glow: 174 62% 90%;
+    
+    /* Neutral tones */
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 220 14% 96%;
+    --accent-foreground: 215 25% 27%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 266 77% 70%;
+    
+    --radius: 1rem;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(266 77% 70%) 0%, hsl(174 62% 65%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(266 77% 95%) 0%, hsl(174 62% 95%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(266 77% 70% / 0.15);
+    --shadow-card: 0 8px 30px -8px hsl(266 77% 70% / 0.2);
+    --shadow-glow: 0 0 40px hsl(266 77% 70% / 0.3);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    /* Dark mode not implemented for prototype */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-subtle text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  /* Hero button variants */
+  .btn-hero {
+    @apply bg-gradient-hero text-primary-foreground px-8 py-4 rounded-lg font-medium shadow-soft hover:shadow-glow transform hover:scale-105 transition-all duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-medium shadow-soft hover:shadow-card transform hover:scale-105 transition-all duration-300;
+  }
+  
+  /* Card variants */
+  .card-feature {
+    @apply bg-card border border-border rounded-xl p-6 shadow-soft hover:shadow-card transition-all duration-300 hover:transform hover:scale-105;
+  }
+  
+  .card-gradient {
+    @apply bg-gradient-card border-0 rounded-xl p-6 shadow-card;
+  }
+  
+  /* Text styles */
+  .text-hero {
+    @apply text-4xl md:text-6xl font-bold bg-gradient-hero bg-clip-text text-transparent leading-tight;
+  }
+  
+  .text-subtitle {
+    @apply text-lg md:text-xl text-muted-foreground leading-relaxed;
+  }
+  
+  /* Chat bubbles */
+  .chat-bubble-user {
+    @apply bg-primary text-primary-foreground rounded-2xl rounded-br-md px-4 py-3 max-w-xs ml-auto shadow-soft;
+  }
+  
+  .chat-bubble-assistant {
+    @apply bg-card border border-border rounded-2xl rounded-bl-md px-4 py-3 max-w-xs mr-auto shadow-soft;
+  }
+  
+  /* Animations */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
